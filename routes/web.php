@@ -21,9 +21,12 @@
 
 
 Route::view('control','control');
+Route::view('tinker','tinker');
 Route::view('/','home');
 Route::view('contact','contact');
 Route::view('about','about');
+Route::post('customers', 'CustomersController@store');
+Route::post('increment', 'CustomersController@increment');
 //Route::view('customer','customer');
 
 // go get the customer controller and run the list function
