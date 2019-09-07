@@ -12,8 +12,14 @@ class CustomersController extends Controller
    // defines the list array and  returns the view (which has the lists in it)
     public function list()
     {
-        $activeCustomers = Customer::where('active',1)->get();
-        $inactiveCustomers = Customer::where('active',0)->get();
+        // defined by scope active
+        // gets active and inactive customers respectively
+        $activeCustomers = Customer::active()->get();
+        $activeCustomers = Customer::inactive()->get();
+       
+        // before scope refactor
+        // $activeCustomers = Customer::where('active',1)->get();
+        // $inactiveCustomers = Customer::where('active',0)->get();
         // $customers = Customer::all();
 
         // dd($inactiveCustomers);
