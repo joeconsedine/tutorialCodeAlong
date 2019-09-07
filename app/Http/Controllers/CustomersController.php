@@ -15,7 +15,7 @@ class CustomersController extends Controller
         // defined by scope active
         // gets active and inactive customers respectively
         $activeCustomers = Customer::active()->get();
-        $activeCustomers = Customer::inactive()->get();
+        $inactiveCustomers = Customer::inactive()->get();
        
         // before scope refactor
         // $activeCustomers = Customer::where('active',1)->get();

@@ -16,5 +16,4 @@ class Customer extends Model
         return $query->where('active',0);
     }    
 
-
-}
+} 
