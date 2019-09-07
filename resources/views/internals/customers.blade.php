@@ -1,3 +1,9 @@
+@extends('layout')
+
+@section('content')
+
+
+
 <h1>customers</h1>
 
 
@@ -11,6 +17,7 @@
 
 </ul>
 
+@endsection
 
 
 {{-- 

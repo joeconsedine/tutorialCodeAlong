@@ -21,14 +21,13 @@
 
 
 Route::view('control','control');
-Route::view('/','welcome');
+Route::view('/','home');
 Route::view('contact','contact');
 Route::view('about','about');
+//Route::view('customer','customer');
 
-
-Route::get('customers', function() {
-
-    
-});
+// go get the customer controller and run the list function
+// you'll be able to put all the increment and decrements into one file under different function calls... maybe!
+Route::get('customers', 'CustomersController@list');
 
 
