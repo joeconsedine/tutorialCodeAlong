@@ -16,48 +16,71 @@ class CustomersController extends Controller
         // gets active and inactive customers respectively
         $activeCustomers = Customer::active()->get();
         $inactiveCustomers = Customer::inactive()->get();
-       
+        
+        // compact refactor
+        return view('internals.customers', compact('activeCustomers', 'inactiveCustomers'));
+        
+        
         // before scope refactor
         // $activeCustomers = Customer::where('active',1)->get();
         // $inactiveCustomers = Customer::where('active',0)->get();
         // $customers = Customer::all();
-
         // dd($inactiveCustomers);
         
         // BEFORE COMPACT REFACTOR
      
-        // return view('internals.customers', [
+        //     return view('internals.customers', 
         //     // 'customers' => $customers,
         //     'activeCustomers' => $activeCustomers,
         //     'inactiveCustomers' => $inactiveCustomers,
         // ]);
      
      
-        // compact refactor
-        return view('internals.customers', compact('activeCustomers', 'inactiveCustomers'));
 
 
     }
+        // REFACTORED STORE FUNCTION
 
     public function store ()
     {
         $data = request()->validate([
-
+            
             'name' => 'required|min:3',
             'email' => 'required|email',
             'active' => 'required'
-
-        ]);
-
-        $customer = new Customer();
-        $customer->name = request('name');
-        $customer->email = request('email');
-        $customer->active = request('active');
-        $customer->save();
-
-        return back();
-        //dd(request('name'));
+            
+            ]);
+            
+            //monster refactor
+            Customer::create($data);
+            
+            return back();
+            //dd(request('name'));
     }
-
-
+    
 }
+
+    // OLD  STORE FUNCTION
+
+
+    // public function store ()
+    // {
+    //     $data = request()->validate([
+
+    //         'name' => 'required|min:3',
+    //         'email' => 'required|email',
+    //         'active' => 'required'
+
+    //     ]);
+
+    //     $customer = new Customer();
+    //     $customer->name = request('name');
+    //     $customer->email = request('email');
+    //     $customer->active = request('active');
+    //     $customer->save();
+
+    //     return back();
+    //     //dd(request('name'));
+    // }
+
+

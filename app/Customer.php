@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
+    // fillable example
+    protected $fillable = ['name', 'email', 'active'];
+
+    // opposite of fillable, nothing is guarded
+    // protected $guarded = [];
+
     public function scopeActive($query)
     {
         return $query->where('active',1);
