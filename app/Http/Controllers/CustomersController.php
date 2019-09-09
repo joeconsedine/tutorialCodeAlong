@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Company;
 use Illuminate\Http\Request;
 
 
@@ -16,9 +17,10 @@ class CustomersController extends Controller
         // gets active and inactive customers respectively
         $activeCustomers = Customer::active()->get();
         $inactiveCustomers = Customer::inactive()->get();
+        $companies = Company::all();
         
         // compact refactor
-        return view('internals.customers', compact('activeCustomers', 'inactiveCustomers'));
+        return view('internals.customers', compact('activeCustomers', 'inactiveCustomers', 'companies'));
         
         
         // before scope refactor
@@ -47,7 +49,9 @@ class CustomersController extends Controller
             
             'name' => 'required|min:3',
             'email' => 'required|email',
-            'active' => 'required'
+            'active' => 'required',
+            'company_id' => 'required'
+
             
             ]);
             
